@@ -1,5 +1,8 @@
 package main
 
+/**
+序列化二叉树与反序列化二叉树
+*/
 import "fmt"
 
 type TreeNode struct {
