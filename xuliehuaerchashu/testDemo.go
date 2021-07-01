@@ -17,7 +17,7 @@ func main() {
 /**
 序列化二叉树
 */
-func SerializationTb(bt TreeNode) {
+func SerializationTb(bt *TreeNode) {
 
 }
 
