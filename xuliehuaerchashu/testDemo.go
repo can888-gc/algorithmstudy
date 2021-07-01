@@ -14,31 +14,41 @@ func main() {
 	fmt.Println(node)
 }
 
+/**
+序列化二叉树
+*/
+func SerializationTb(bt TreeNode) {
+
+}
+
+/**
+反序列化二叉树
+*/
 func DeserializationTb(dataQueue []string) (resultNode *TreeNode) {
 	if len(dataQueue) == 0 {
 		return nil
 	}
 	var tempNodeQueue []*TreeNode
-	resultNode = generateNode(dataQueue[len(dataQueue) - 1])
-	dataQueue = dataQueue[:len(dataQueue) - 1]
+	resultNode = generateNode(dataQueue[len(dataQueue)-1])
+	dataQueue = dataQueue[:len(dataQueue)-1]
 	if resultNode != nil {
-		tempNodeQueue = append(tempNodeQueue,resultNode)
+		tempNodeQueue = append(tempNodeQueue, resultNode)
 	}
 	var tempNode *TreeNode
 	for len(tempNodeQueue) != 0 {
 		tempNode = tempNodeQueue[0]
 		tempNodeQueue = tempNodeQueue[1:]
 		if len(dataQueue) > 0 {
-			tempNode.left = generateNode(dataQueue[len(dataQueue) - 1])
-			dataQueue = dataQueue[:len(dataQueue) - 1]
-			tempNode.right = generateNode(dataQueue[len(dataQueue) - 1])
-			dataQueue = dataQueue[:len(dataQueue) - 1]
+			tempNode.left = generateNode(dataQueue[len(dataQueue)-1])
+			dataQueue = dataQueue[:len(dataQueue)-1]
+			tempNode.right = generateNode(dataQueue[len(dataQueue)-1])
+			dataQueue = dataQueue[:len(dataQueue)-1]
 		}
 		if tempNode.left != nil {
-			tempNodeQueue = append(tempNodeQueue,tempNode.left)
+			tempNodeQueue = append(tempNodeQueue, tempNode.left)
 		}
 		if tempNode.right != nil {
-			tempNodeQueue = append(tempNodeQueue,tempNode.right)
+			tempNodeQueue = append(tempNodeQueue, tempNode.right)
 		}
 	}
 	return
