@@ -10,7 +10,7 @@ type TreeNode struct {
 
 func main() {
 	//"1","2","3","null","null","4","5"
-	dataQueue := []string{"7", "6", "5", "4", "null", "null", "3", "2", "1"}
+	dataQueue := []string{"1", "2", "3", "null", "null", "4", "5"}
 	node := DeserializationTb(dataQueue)
 	fmt.Println(node)
 
@@ -56,8 +56,8 @@ func DeserializationTb(dataQueue []string) (resultNode *TreeNode) {
 		return nil
 	}
 	var tempNodeQueue []*TreeNode
-	resultNode = generateNode(dataQueue[len(dataQueue)-1])
-	dataQueue = dataQueue[:len(dataQueue)-1]
+	resultNode = generateNode(dataQueue[0])
+	dataQueue = dataQueue[1:]
 	if resultNode != nil {
 		tempNodeQueue = append(tempNodeQueue, resultNode)
 	}
@@ -66,10 +66,10 @@ func DeserializationTb(dataQueue []string) (resultNode *TreeNode) {
 		tempNode = tempNodeQueue[0]
 		tempNodeQueue = tempNodeQueue[1:]
 		if len(dataQueue) > 0 {
-			tempNode.left = generateNode(dataQueue[len(dataQueue)-1])
-			dataQueue = dataQueue[:len(dataQueue)-1]
-			tempNode.right = generateNode(dataQueue[len(dataQueue)-1])
-			dataQueue = dataQueue[:len(dataQueue)-1]
+			tempNode.left = generateNode(dataQueue[0])
+			dataQueue = dataQueue[1:]
+			tempNode.right = generateNode(dataQueue[0])
+			dataQueue = dataQueue[1:]
 		}
 		if tempNode.left != nil {
 			tempNodeQueue = append(tempNodeQueue, tempNode.left)
