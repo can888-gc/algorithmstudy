@@ -46,9 +46,6 @@ func SerializationTb(bt *TreeNode) {
 			tempQueue = append(tempQueue, tempNode.right)
 		}
 	}
-
-	v := 10 / 5
-	fmt.Print(v)
 }
 
 /**
