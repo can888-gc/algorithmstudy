@@ -1,8 +1,5 @@
 package main
 
-/**
-序列化二叉树与反序列化二叉树
-*/
 import "fmt"
 
 type TreeNode struct {
@@ -12,16 +9,46 @@ type TreeNode struct {
 }
 
 func main() {
-	dataQueue := []string{"5", "4", "null", "null", "3", "2", "1"}
+	//"1","2","3","null","null","4","5"
+	dataQueue := []string{"7", "6", "5", "4", "null", "null", "3", "2", "1"}
 	node := DeserializationTb(dataQueue)
 	fmt.Println(node)
+
+	sNode := &TreeNode{val: "1"}
+	sNode.left = &TreeNode{val: "2"}
+	sNode.right = &TreeNode{val: "3"}
+	sNode.right.left = &TreeNode{val: "4"}
+	sNode.right.right = &TreeNode{val: "5"}
+	SerializationTb(sNode)
 }
 
 /**
 序列化二叉树
 */
 func SerializationTb(bt *TreeNode) {
+	root := bt
+	var tempQueue []*TreeNode
+	var saveSerData []string
+	if root != nil {
+		tempQueue = append(tempQueue, root)
+	}
+	var tempNode *TreeNode
+	for len(tempQueue) != 0 {
+		tempNode = tempQueue[0]
+		if tempNode != nil {
+			saveSerData = append(saveSerData, tempNode.val)
+		} else {
+			saveSerData = append(saveSerData, "null")
+		}
+		tempQueue = tempQueue[1:]
+		if tempNode != nil {
+			tempQueue = append(tempQueue, tempNode.left)
+			tempQueue = append(tempQueue, tempNode.right)
+		}
+	}
 
+	v := 10 / 5
+	fmt.Print(v)
 }
 
 /**
