@@ -18,17 +18,18 @@ func main() {
 	sNode.left = &TreeNode{val: "2"}
 	sNode.right = &TreeNode{val: "3"}
 	sNode.right.left = &TreeNode{val: "4"}
-	sNode.right.right = &TreeNode{val: "5"}
-	SerializationTb(sNode)
+	sNode.right.left.left = &TreeNode{val: "5"}
+	sNode.right.right = &TreeNode{val: "6"}
+	result := SerializationTb(sNode)
+	fmt.Print(result)
 }
 
 /**
 序列化二叉树
 */
-func SerializationTb(bt *TreeNode) {
+func SerializationTb(bt *TreeNode) (saveSerData []string) {
 	root := bt
 	var tempQueue []*TreeNode
-	var saveSerData []string
 	if root != nil {
 		tempQueue = append(tempQueue, root)
 	}
@@ -46,6 +47,7 @@ func SerializationTb(bt *TreeNode) {
 			tempQueue = append(tempQueue, tempNode.right)
 		}
 	}
+	return
 }
 
 /**
