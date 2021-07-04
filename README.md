@@ -9,5 +9,5 @@
 |           题目           |                        文章                        |                           源码地址                           |
 | :----------------------: | :------------------------------------------------: | :----------------------------------------------------------: |
 | 二叉树的序例化与反序列化 | [文章](https://juejin.cn/post/6979862436492869662) | [源码](https://github.com/can888-gc/algorithmstudy/tree/main/xuliehuaerchashu) |
-|   查找二叉树的最大宽度   |                      正在编写                      | [源码](https://github.com/can888-gc/algorithmstudy/tree/main/MaximumWidthOfBt) |
+|   查找二叉树的最大宽度   | [文章](https://juejin.cn/post/6981023626619437070) | [源码](https://github.com/can888-gc/algorithmstudy/tree/main/MaximumWidthOfBt) |
 
