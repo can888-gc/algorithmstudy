@@ -24,16 +24,16 @@ func main() {
 	sNode.right.left = &TreeNode{val: "4"}
 	sNode.right.left.left = &TreeNode{val: "5"}
 	sNode.right.right = &TreeNode{val: "6"}
-	maxW := findBtMaxWidth(sNode)
-	fmt.Printf("最大宽度: %v", maxW)
+	maxW, row := findBtMaxWidth(sNode)
+	fmt.Printf("最大宽度: %v;在第 %v层", maxW, row)
 }
 
-func findBtMaxWidth(bt *TreeNode) (maxWidth int) {
+func findBtMaxWidth(bt *TreeNode) (maxWidth int, row int) {
+	row = 1
 	//临时保存节点的队列
 	var tempSaveNodeQueue []*TreeNode
 	//保存宽度
 	count := 0
-
 	var currentRowEndNode *TreeNode
 	var nextRowEndNode *TreeNode
 	if bt != nil {
@@ -61,9 +61,11 @@ func findBtMaxWidth(bt *TreeNode) (maxWidth int) {
 		if currentRowEndNode == treeNode {
 			currentRowEndNode = nextRowEndNode
 			if maxWidth < count {
+				row++
 				maxWidth = count
 			}
 			count = 0
+
 		}
 
 	}
