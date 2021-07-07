@@ -19,10 +19,11 @@ func main() {
 	root := &TreeNode{val: "1"}
 	root.left = &TreeNode{val: "2"}
 	root.left.left = &TreeNode{val: "4"}
-	//root.left.left.left = &TreeNode{val: "7"}
+	root.left.right = &TreeNode{val: "10"}
+	root.left.left.left = &TreeNode{val: "7"}
 	root.right = &TreeNode{val: "3"}
-	//root.right.left = &TreeNode{val: "5"}
-	//root.right.right = &TreeNode{val: "6"}
+	root.right.left = &TreeNode{val: "5"}
+	root.right.right = &TreeNode{val: "6"}
 	if IsCompleteBt(root) {
 		fmt.Println("是完全二叉树")
 	} else {
@@ -46,26 +47,25 @@ func IsCompleteBt(root *TreeNode) bool {
 	tempNodeQueue = append(tempNodeQueue, root)
 
 	var tempNode *TreeNode
-
 	isSingleNode := false
 	for len(tempNodeQueue) != 0 {
 		tempNode = tempNodeQueue[0]
 		tempNodeQueue = tempNodeQueue[1:]
 
-		if tempNode.left == nil {
-			isSingleNode = true
-		} else {
-			tempNodeQueue = append(tempNodeQueue, tempNode.left)
-		}
-
-		if tempNode.right == nil {
-			isSingleNode = true
-		} else {
-			tempNodeQueue = append(tempNodeQueue, tempNode.right)
-		}
-
-		if (isSingleNode && (tempNode.right != nil || tempNode.left != nil)) || (tempNode.right != nil && tempNode.left == nil) {
+		if (isSingleNode && (tempNode.left != nil || tempNode.right != nil)) || (tempNode.left == nil && tempNode.right != nil){
 			return false
+		}
+
+		if tempNode.left != nil{
+			tempNodeQueue = append(tempNodeQueue,tempNode.left)
+		}else{
+			isSingleNode = true
+		}
+
+		if  tempNode.right != nil {
+			tempNodeQueue = append(tempNodeQueue, tempNode.right)
+		}else{
+			isSingleNode = true
 		}
 	}
 	return true
